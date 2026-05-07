@@ -168,9 +168,10 @@
   <br>
   <button onclick="removeActiveFile(); saveToLocalStorage()">remove active file</button>
   <input id="filenameInput" type="text" placeholder="filename" oninput="renameFile(); saveToLocalStorage()" value="new file" tabindex="-1"> 
-  
-  <p id="DISPLAY" class="DisplayCSS wrapEnabled" contenteditable="plaintext-only" style="tab-size: 4;"></p>
- 
+
+	<div id="DisplaySideBySideDiv">
+  	<p id="DISPLAY" class="DisplayCSS wrapEnabled" contenteditable="plaintext-only" style="tab-size: 4;"></p>
+ 	</div>
  
   <button onclick="copyCodeYAY(); saveToLocalStorage()">copy</button>
   <button onclick="saveTextToFiles(); saveToLocalStorage()">save file</button>
@@ -280,7 +281,7 @@
 			<input id="codeDisplayAutoReload" onchange="setCodeDisplayAutoReload()" type="checkbox" checked>
 
 			<span>side by side: </span>
-			<input id="codeDisplaySideBySide" onchange="add" type="checkbox">
+			<input id="codeDisplaySideBySide" onchange="setCodeDisplaySideBySide()" type="checkbox">
 		</div>
 
 		<div id="codeDisplayBox"></div>
@@ -327,6 +328,7 @@
 		const HTMLDisplayWidth = document.getElementById("HTMLDisplayWidth")
 		const codeDisplayEnable = document.getElementById("codeDisplayEnable")
 		const codeDisplaySideBySide = document.getElementById("codeDisplaySideBySide")
+		const DisplaySideBySideDiv = document.getElementById("DisplaySideBySideDiv")
 		
 	  let HTMLdisplayIframe;
     async function displayFileText() {
@@ -1105,7 +1107,14 @@
 			console.log("failed to reload") //$w$ :33 (capatalizme)
 		}
 	}
-		
+
+	function setCodeDisplaySideBySide() {
+		/* codeDisplaySideBySide.checked DisplaySideBySideDiv / codeDisplayBox */
+		if (codeDisplaySideBySide.checked) {
+			DisplaySideBySideDiv.appendChild(codeDisplayBox)
+			DisplaySideBySideDiv.classList.add("DisplaySideBySideDivSideBySideMode")
+		}
+	}
   </script>
   </body>
 </html>
