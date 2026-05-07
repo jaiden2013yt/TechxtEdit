@@ -296,7 +296,10 @@
 			<input id="codeDisplaySideBySide" onchange="setCodeDisplaySideBySide()" type="checkbox">
 		</div>
 
-		<div id="codeDisplayBox"></div>
+		<div id="stimulatingCodeDisplayBoxContairer">
+			<div id="codeDisplayBox"></div>
+		</div>
+		
 	</div>
 	
   <br><br><br><br>
@@ -341,6 +344,7 @@
 		const codeDisplayEnable = document.getElementById("codeDisplayEnable")
 		const codeDisplaySideBySide = document.getElementById("codeDisplaySideBySide")
 		const DisplaySideBySideDiv = document.getElementById("DisplaySideBySideDiv")
+		const stimulatingCodeDisplayBoxContairer = document.getElementById("stimulatingCodeDisplayBoxContairer")
 		
 	  let HTMLdisplayIframe;
     async function displayFileText() {
@@ -1125,6 +1129,9 @@
 		if (codeDisplaySideBySide.checked) {
 			DisplaySideBySideDiv.appendChild(codeDisplayBox)
 			DisplaySideBySideDiv.classList.add("DisplaySideBySideDivSideBySideMode")
+		} else {
+			stimulatingCodeDisplayBoxContairer.appendChild(DisplaySideBySideDiv)
+			DisplaySideBySideDiv.classList.remove("DisplaySideBySideDivSideBySideMode")
 		}
 	}
   </script>
