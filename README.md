@@ -11,4 +11,5 @@ if you find any bugs or have anying you would want to see in this *please* make 
 - a save all button to save a zip/folder containing all documents - i added the export save, but that isnt really this so its still unstriked
 - height selection for the editor element(DISPLAY)
 - ~~export save~~ and import save
+- ASSINATE SERVICE WORKER BUTTON, AND A DISABLE CHECKMARK
 - i will add more later
