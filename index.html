@@ -230,6 +230,8 @@
     <button onclick="openTextInProgram('JSONLint')">JSONLint</button>
     <button onclick="openTextInProgram('wolframAlpha')">wolfram alpha</button>
     <button onclick="openTextInProgram('cyberChef')">cyber chef</button>
+		<button onclick="openTextInProgram('reddit')">reddit</button>
+		
     <button onclick="hideProgramOpeningModal()">close</button>
   </dialog>
   
@@ -951,22 +953,41 @@
       //https://www.wolframalpha.com/input?i=
       wolframAlpha: {startUrl: "https://www.wolframalpha.com/input?i=", endUrl: "", formatMode: "urlEncode"},
       cyberChef: {startUrl: "https://gchq.github.io/CyberChef/#input=", endUrl: "&ienc=65001", formatMode: "cyberChef"},
+			reddit: {startUrl: "https://www.reddit.com/submit?text=", endUrl: "&title=", formatMode: "urlEncode", title: {
+				endUrl: "", formatMode: "urlEncode"
+			}, },
+			
     }
     
     function openTextInProgram(programKey) {
       const format = programOpeningList[programKey].formatMode
-      let encodedText;
+      let encodedText, url;
+			let encodedTitle = ""
       //console.log(format, DISPLAY.innerText)
-      if(format === "urlEncode") {
-        encodedText = encodeURIComponent(DISPLAY.innerText)
-      } else if(format === "cyberChef") {
-        encodedText = encodeURIComponent(Base64Plus.encode(DISPLAY.innerText).replaceAll("=", ""))
-      }
+			encodedText = doFormatting(format, DISPLAY.innerText)
       
-      const url = programOpeningList[programKey].startUrl + encodedText + programOpeningList[programKey].endUrl 
-      window.open(url, "_blank")
+      
+      url = programOpeningList[programKey].startUrl + encodedText + programOpeningList[programKey].endUrl
+
+			if(programOpeningList[programKey].title != null) { // check for gay nullish guys :3
+				encodedTitle = doFormatting(programOpeningList[programKey].title.formatMode, filenameInput.value)
+				url += encodedTitle + programOpeningList[programKey].title.endUrl
+			}
+			
+    	window.open(url, "_blank")
     }
-   
+
+		function doFormatting(format, text) {
+			
+			if(format === "urlEncode") {
+        return encodeURIComponent(text);
+      } else if(format === "cyberChef") {
+        return encodeURIComponent(Base64Plus.encode(text).replaceAll("=", ""));
+      }
+		}
+
+
+		
     async function regesterServiceWorker() {
       const DoServiceWorker = true
 			
