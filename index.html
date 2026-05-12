@@ -384,14 +384,15 @@
         
         // parse my paws :3
         
-        //let pawersted = "ERROR wahhh"
+       let pawersted = ""
         
-        //try {
-        let pawersted = JSON.stringify(JSON.parse(DISPLAY.innerText))
-        //} catch (bugs) { 
-        //  alert("aaaguhgu i failed two parse :(((((")
-        //  return;
-        //}
+        try {
+          pawersted = DISPLAY.innerText = "" + JSON.stringify(JSON.parse(DISPLAY.innerText))
+        } catch(bugs) {
+          alert("arrg ;w;, your aweseom jayson failed to base minify :( :((((")
+					console.log("json styningifaction: " + bugs)
+					return;
+        }
           
         pawersted = pawersted.replaceAll('{', '{\n')
         pawersted = pawersted.replaceAll('}', '\n}')
