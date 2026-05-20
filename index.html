@@ -368,6 +368,11 @@
 		const codeDisplaySideBySide = document.getElementById("codeDisplaySideBySide")
 		const DisplaySideBySideDiv = document.getElementById("DisplaySideBySideDiv")
 		const stimulatingCodeDisplayBoxContairer = document.getElementById("stimulatingCodeDisplayBoxContairer")
+
+		
+		const encodeDecodeDialog = document.getElementById("encodeDecodeDialog")
+		
+
 		
 	  let HTMLdisplayIframe;
     async function displayFileText() {
@@ -1181,6 +1186,28 @@
 			DisplaySideBySideDiv.classList.remove("DisplaySideBySideDivSideBySideMode")
 		}
 	}
+
+
+
+	/* 
+			onclick="showEncodeDecodeModal()">encode/decode</button>
+  
+  <dialog id="encodeDecodeDialog">
+    
+		<button onclick="encodeDecodeText(true, 'url encode')">url encode (no pluses)</button>
+		
+    <button onclick="hideEncodeDecodeModal() 
+      */
+		
+	function showEncodeDecodeModal() {
+		
+		encodeDecodeDialog.showModal()
+	}
+
+	function hideEncodeDecodeModal() {
+		encodeDecodeDialog.close()
+	}
+		
   </script>
   </body>
 </html>
