@@ -244,7 +244,19 @@
     <button onclick="hideProgramOpeningModal()">close</button>
   </dialog>
   
+	
+	
   
+  <button onclick="showEncodeDecodeModal()">encode/decode</button>
+  
+  <dialog id="encodeDecodeDialog">
+    
+		<button onclick="encodeDecodeText(true, 'url encode')">url encode (no pluses)</button>
+		
+    <button onclick="hideEncodeDecodeModal()">close</button>
+  </dialog>
+
+		
   <br>
   <span>font: </span>
   <select onchange="setFont(); saveToLocalStorage()" id="fontSelectionSelect" tabindex="-1">
