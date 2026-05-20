@@ -251,7 +251,7 @@
   
   <dialog id="encodeDecodeDialog">
     
-		<button onclick="encodeDecodeText(true, 'url encode')">url encode (no pluses)</button>
+		<button onclick="encodeDecodeText('urlEncode')">url encode (no pluses)</button>
 		
     <button onclick="hideEncodeDecodeModal()">close</button>
   </dialog>
@@ -1207,7 +1207,11 @@
 	function hideEncodeDecodeModal() {
 		encodeDecodeDialog.close()
 	}
-		
+
+	function encodeDecodeText(method) {
+		const text = DISPLAY.innerText
+		DISPLAY.innerText = doFormatting(method, text)
+	}
   </script>
   </body>
 </html>
