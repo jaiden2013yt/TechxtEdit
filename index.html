@@ -252,7 +252,7 @@
   <dialog id="encodeDecodeDialog">
     
 		<button onclick="encodeDecodeText('urlEncode')">url encode (no pluses)</button>
-		
+		<button onclick="encodeDecodeText('urlDecode')">>url decode (no pluses)</button>
     <button onclick="hideEncodeDecodeModal()">close</button>
   </dialog>
 
@@ -1012,6 +1012,10 @@
 			
 			if(format === "urlEncode") {
         return encodeURIComponent(text);
+      } else if(format === "urlDecode") {
+				return  decodeURIComponent(text);
+			} else if(format === "base64Encode") {
+        return Base64Plus.encode(text)
       } else if(format === "cyberChef") {
         return encodeURIComponent(Base64Plus.encode(text).replaceAll("=", ""));
       }
