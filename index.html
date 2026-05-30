@@ -1150,10 +1150,9 @@
 	function setCodeDisplayAutoReload() {
 		settings.codeDisplay.CodeDisplayAutoReload = codeDisplayAutoReload.checked
 		DISPLAY.removeEventListener("input", codeDisplayReloadEv) //just in case :3
-		
+		console.log("setting CodeDisplayAutoReload: ", codeDisplayAutoReload.checked, HTMLdisplayIframe)
 		if (codeDisplayAutoReload.checked && HTMLdisplayIframe) {
 			DISPLAY.addEventListener("input", codeDisplayReloadEv)
-			firsLoad = false;
 		} else {
 			DISPLAY.removeEventListener("input", codeDisplayReloadEv) //this will just fail if there is none :3
 		}
