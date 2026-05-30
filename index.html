@@ -1109,6 +1109,8 @@
 					if (codeDisplayAutoReload.checked && firsLoad) {
 						DISPLAY.addEventListener("input", codeDisplayReloadEv)
 						firsLoad = false;
+					} else {
+						DISPLAY.removeEventListener("input", codeDisplayReloadEv) //this will just fail if there is none :3
 					}
 				} else {
 					alert("failed to load") //uwu :3
@@ -1146,21 +1148,23 @@
 	}
 
 	function setCodeDisplayAutoReload() {
-		HTMLdisplayIframe.contentWindow.location.reload();
+		settings.codeDisplay.CodeDisplayAutoReload = codeDisplayAutoReload.checked
+		DISPLAY.removeEventListener("input", codeDisplayReloadEv) //just in case :3
+		
+		if (codeDisplayAutoReload.checked) {
+			DISPLAY.addEventListener("input", codeDisplayReloadEv)
+			firsLoad = false;
+		} else {
+			DISPLAY.removeEventListener("input", codeDisplayReloadEv) //this will just fail if there is none :3
+		}
+		
 	}
 		
 	function codeDisplayReloadEv() {
 		console.log("in codeDisplayReloadEv :3")
 		if (HTMLdisplayIframe == null || !codeDisplayAutoReload.checked) return;
-
-		if(HTMLdisplayIframe.contentDocument != null) { //if HTMLdisplayIframe.contentDocument isnt nullish(null or undefied)
-			
-			HTMLdisplayIframe.contentDocument.open();
-			HTMLdisplayIframe.contentDocument.write(DISPLAY.innerText);
-			HTMLdisplayIframe.contentDocument.close();
-		} else {
-			console.log("failed to reload") //$w$ :33 (capatalizme)
-		}
+		
+		HTMLdisplayIframe.contentWindow.location.reload();
 	}
 
 	function setCodeDisplaySideBySide() {
