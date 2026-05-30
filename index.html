@@ -1140,30 +1140,11 @@
 	
 	
 	function codeDisplayReloadBTN() {
-		
-			
-		if(HTMLdisplayIframe == null) return;
-
-		if(HTMLdisplayIframe.contentDocument !== null) { //if HTMLdisplayIframe.contentDocument isnt nullish(null or undefied)
-			
-			HTMLdisplayIframe.contentDocument.open();
-			HTMLdisplayIframe.contentDocument.write(DISPLAY.innerText);
-			HTMLdisplayIframe.contentDocument.close();
-		} else {
-			alert("failed to reload") //gay :33
-		}
+		HTMLdisplayIframe.contentWindow.location.reload();
 	}
 
 	function setCodeDisplayAutoReload() {
-		settings.codeDisplay.CodeDisplayAutoReload = codeDisplayAutoReload.checked
-		
-		if (codeDisplayAutoReload.checked) {
-			if (HTMLdisplayIframe != null) { 
-				DISPLAY.addEventListener("input", codeDisplayReloadEv)
-			}
-		} else {
-			DISPLAY.removeEventListener("input", codeDisplayReloadEv)
-		}
+		HTMLdisplayIframe.contentWindow.location.reload();
 	}
 		
 	function codeDisplayReloadEv() {
