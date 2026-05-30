@@ -1,4 +1,4 @@
-# TexEdit 
+# TechxtEdit 
 texEdit is a text editor ive been making :3  
 if you find any bugs or have anying you would want to see in this *please* make a `issue` about that x3
 # things i want to add
