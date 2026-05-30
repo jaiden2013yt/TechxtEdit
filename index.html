@@ -1151,7 +1151,7 @@
 		settings.codeDisplay.CodeDisplayAutoReload = codeDisplayAutoReload.checked
 		DISPLAY.removeEventListener("input", codeDisplayReloadEv) //just in case :3
 		
-		if (codeDisplayAutoReload.checked) {
+		if (codeDisplayAutoReload.checked && HTMLdisplayIframe) {
 			DISPLAY.addEventListener("input", codeDisplayReloadEv)
 			firsLoad = false;
 		} else {
