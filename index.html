@@ -236,10 +236,18 @@
     <button onclick="openTextInProgram('wolframAlpha')">wolfram alpha</button>
     <button onclick="openTextInProgram('cyberChef')">cyber chef</button>
 		<button onclick="openTextInProgram('reddit')">reddit</button>
+		
 		<button onclick="openTextInProgram('deepl')">deepl</button>
 		<button onclick="openTextInProgram('googleTranslate')">google translate</button>
 		<button onclick="openTextInProgram('libreTranslate')">libre translate</button>
 		<button onclick="openTextInProgram('apertium')">apertium</button>
+
+		<button onclick="openTextInProgram('google')">google</button>
+		<button onclick="openTextInProgram('bing')">bing</button>
+		<button onclick="openTextInProgram('yahoo')">yahoo</button>
+		<button onclick="openTextInProgram('duckduckgo')">duckduckgo</button>
+		<button onclick="openTextInProgram('yandex')">yandex</button>
+		<button onclick="openTextInProgram('ecosia')">ecosia</button>
 		
     <button onclick="hideProgramOpeningModal()">close</button>
   </dialog>
@@ -976,18 +984,26 @@
     //openTextInProgram('wolframAlpha')
     const programOpeningList = {
       overpassTurbo: {startUrl: "https://overpass-turbo.eu/index.html?Q=", endUrl: "", formatMode: "urlEncode"},
-      JSONLint: {startUrl: "https://jsonlint.com/?json=", endUrl: "", formatMode: "urlEncode"},
+      JSONLint: {startUrl: "https://jsonlint.com/?json=", endUrl: "", formatMode: "urlEncodePluses"},
       //https://www.wolframalpha.com/input?i=
-      wolframAlpha: {startUrl: "https://www.wolframalpha.com/input?i=", endUrl: "", formatMode: "urlEncode"},
+      wolframAlpha: {startUrl: "https://www.wolframalpha.com/input?i=", endUrl: "", formatMode: "urlEncodePluses"},
       cyberChef: {startUrl: "https://gchq.github.io/CyberChef/#input=", endUrl: "&ienc=65001", formatMode: "cyberChef"},
-			reddit: {startUrl: "https://www.reddit.com/submit?text=", endUrl: "&title=", formatMode: "urlEncode", title: {
-				endUrl: "", formatMode: "urlEncode"
+			reddit: {startUrl: "https://www.reddit.com/submit?text=", endUrl: "&title=", formatMode: "urlEncodePluses", title: {
+				endUrl: "", formatMode: "urlEncodePluses"
 			}, },
-			//i still nedd to add buttons for these in the html above 
+			
 			deepl: {startUrl: "https://www.deepl.com/translator#en/de/", endUrl: "", formatMode: "urlEncode"},
-			googleTranslate: {startUrl: "https://translate.google.com/?text=", endUrl: "", formatMode: "urlEncode"},
-			libreTranslate: {startUrl: "https://libretranslate.com/?source=auto&q=", endUrl: "", formatMode: "urlEncode"},
-			apertium: {startUrl: "https://www.apertium.org/index.html#?q=", endUrl: "", formatMode: "urlEncode"},
+			googleTranslate: {startUrl: "https://translate.google.com/?text=", endUrl: "", formatMode: "urlEncodePluses"},
+			libreTranslate: {startUrl: "https://libretranslate.com/?source=auto&q=", endUrl: "", formatMode: "urlEncodePluses"},
+			apertium: {startUrl: "https://www.apertium.org/index.html#?q=", endUrl: "", formatMode: "urlEncodePluses"},
+			
+			//i still nedd to add buttons for these in the html above 
+			google: {startUrl: "http://google.com/search?q=", endUrl: "", formatMode: "urlEncodePluses"},
+			bing: {startUrl: "https://www.bing.com/search?q=", endUrl: "", formatMode: "urlEncodePluses"},
+			yahoo: {startUrl: "https://search.yahoo.com/search?p=", endUrl: "", formatMode: "urlEncodePluses"},
+			duckduckgo: {startUrl: "https://duckduckgo.com/?q=", endUrl: "", formatMode: "urlEncodePluses"},
+			yandex: {startUrl: "https://yandex.com/search/?text=", endUrl: "", formatMode: "urlEncodePluses"},
+			ecosia: {startUrl: "https://www.ecosia.org/search?q=", endUrl: "", formatMode: "urlEncodePluses"},
     }
     
     function openTextInProgram(programKey) {
@@ -1016,6 +1032,8 @@
 				return  decodeURIComponent(text);
 			} else if(format === "base64Encode") {
         return Base64Plus.encode(text)
+			} else if(format === "urlEncodePluses") {
+        return encodeURIComponent(text).replaceAll("%20", "+")
       } else if(format === "cyberChef") {
         return encodeURIComponent(Base64Plus.encode(text).replaceAll("=", ""));
       }
