@@ -12,4 +12,5 @@ if you find any bugs or have anying you would want to see in this *please* make 
 - height selection for the editor element(DISPLAY)
 - ~~export save~~ and import save
 - ASSINATE SERVICE WORKER BUTTON, AND A DISABLE CHECKMARK
+- flip option in the replace text thing :3 
 - i will add more later
