@@ -1226,7 +1226,7 @@
 
 	//importSaveFileInput
 	function importSave() {
-		const daSave = importSaveFileInput.files[0].text()
+		const daSave = await importSaveFileInput.files[0].text()
 
 		try {
 			JSON.parse(daSave)
