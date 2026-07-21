@@ -1123,7 +1123,7 @@
 			HTMLdisplayIframe.addEventListener("load", () => {
 				//set the page to contents to be that of DISPLAY.innerText
 				if(HTMLdisplayIframe.contentDocument !== null) { //if HTMLdisplayIframe.contentDocument isnt nullish(null or undefied)
-					HTMLdisplayIframe.style.display = "none"
+					
 					//these three lines are from https://github.com/Offroaders123/Smart-Text-Editor/blob/b6ea4039059905376a64fa498bb278b2d9e3a46b/src/workspace/Workspace.tsx#L317
 					HTMLdisplayIframe.contentDocument.open();
 	  			HTMLdisplayIframe.contentDocument.write(DISPLAY.innerText);
@@ -1175,7 +1175,7 @@
 	
 	
 	function codeDisplayReloadBTN() {
-		codeDisplayReloadEv
+		codeDisplayReloadEv()
 	}
 
 	function setCodeDisplayAutoReload() {
@@ -1193,7 +1193,7 @@
 	function codeDisplayReloadEv() {
 		console.log("in codeDisplayReloadEv :3")
 		if (HTMLdisplayIframe == null || !codeDisplayAutoReload.checked) return;
-		
+		HTMLdisplayIframe.style.display = "none"
 		HTMLdisplayIframe.contentWindow.location.reload();
 	}
 
