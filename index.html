@@ -331,7 +331,7 @@
 		</div>
 
 		<div id="stimulatingCodeDisplayBoxContairer">
-			<div id="codeDisplayBox"></div>
+			<div id="codeDisplayBox"><div id="sizedHTMLIFrameBoxDisplay"></div></div>
 		</div>
 		
 	</div>
@@ -373,6 +373,7 @@
 		const importSaveFileInput = document.getElementById("importSaveFileInput")
 		
 		const codeDisplayBox = document.getElementById("codeDisplayBox")
+		const sizedHTMLIFrameBoxDisplay = document.getElementById("sizedHTMLIFrameBoxDisplay")
 		const codeDisplayAutoReload = document.getElementById("codeDisplayAutoReload")
 		const HTMLDisplayHeight = document.getElementById("HTMLDisplayHeight")
 		const HTMLDisplayWidth = document.getElementById("HTMLDisplayWidth")
@@ -1100,7 +1101,7 @@
 
 
 
-	//codeDisplayBox codeDisplayAutoReload HTMLDisplayHeight HTMLDisplayWidth codeDisplayEnable
+	//codeDisplayBox sizedHTMLIFrameBoxDisplay codeDisplayAutoReload HTMLDisplayHeight HTMLDisplayWidth codeDisplayEnable
 	
 	function enableCodeDisplay() {
 		settings.codeDisplay.HTMLdisplayIframeEnabled = codeDisplayEnable.checked
@@ -1108,7 +1109,7 @@
 		if(codeDisplayEnable.checked) {
 			
 			
-			codeDisplayBox.innerHTML = ""
+			sizedHTMLIFrameBoxDisplay.innerHTML = ""
 			HTMLdisplayIframe = document.createElement("iframe")
 			HTMLdisplayIframe.width = HTMLDisplayWidth.value
 			HTMLdisplayIframe.height = HTMLDisplayHeight.value
@@ -1137,13 +1138,17 @@
 					alert("failed to load") //uwu :3
 				}
 			})
-			
-			codeDisplayBox.appendChild(HTMLdisplayIframe)
+
+			sizedHTMLIFrameBoxDisplay.style.height = settings.codeDisplay.HTMLDisplayHeight + "px"
+			sizedHTMLIFrameBoxDisplay.style.width = settings.codeDisplay.HTMLDisplayWidth + "px"
+			sizedHTMLIFrameBoxDisplay.appendChild(HTMLdisplayIframe)
 		} else {
 			
 			HTMLdisplayIframe = undefined
-			codeDisplayBox.innerHTML = ""
+			sizedHTMLIFrameBoxDisplay.innerHTML = ""
 			DISPLAY.removeEventListener("input", codeDisplayReloadEv)
+			sizedHTMLIFrameBoxDisplay.style.height = "0px"
+			sizedHTMLIFrameBoxDisplay.style.width = "0px"
 		}
 	}
 
@@ -1151,6 +1156,7 @@
 			settings.codeDisplay.HTMLDisplayHeight = HTMLDisplayHeight.value
 		if (HTMLdisplayIframe) {
 			HTMLdisplayIframe.height = HTMLDisplayHeight.value
+			sizedHTMLIFrameBoxDisplay.style.height = settings.codeDisplay.HTMLDisplayHeight + "px"
 		}
 	}
 
@@ -1158,6 +1164,7 @@
 			settings.codeDisplay.HTMLDisplayWidth = HTMLDisplayWidth.value
 		if (HTMLdisplayIframe) {
 			HTMLdisplayIframe.width = HTMLDisplayWidth.value
+			sizedHTMLIFrameBoxDisplay.style.width = settings.codeDisplay.HTMLDisplayWidth + "px"
 		}
 	}
 
