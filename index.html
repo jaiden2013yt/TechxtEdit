@@ -1316,7 +1316,9 @@
     }
     
     function outputEditorHeight(Val) {
-      
+      if (val>10000) val = 10000 //if val is too big u cant scroll to the bottom to fix it
+
+	
       settings.EditorWidth = Val
       DisplaySideBySideDiv.style.height = "" + Val + "px"
     }  
