@@ -39,7 +39,8 @@
           margin-left: 0.5rem;
           margin-right: 0.5rem;
           margin-bottom: 1rem;
-          height: 70vh;
+          height: 100%;
+  				box-sizing: border-box;
           overflow-y: scroll;
           white-space: pre; 
           line-height: 1.5em;
@@ -187,7 +188,7 @@
   <button onclick="removeActiveFile(); saveToLocalStorage()">remove active file</button>
   <input id="filenameInput" type="text" placeholder="filename" oninput="renameFile(); saveToLocalStorage()" value="new file" tabindex="-1"> 
 
-	<div id="DisplaySideBySideDiv">
+	<div id="DisplaySideBySideDiv" style="height: 70vh;">
   	<p id="DISPLAY" class="DisplayCSS wrapEnabled" contenteditable="plaintext-only" style="tab-size: 4;"></p>
  	</div>
  
