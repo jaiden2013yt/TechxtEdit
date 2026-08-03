@@ -311,7 +311,7 @@
 	<span>editor height</span> 
 	<input id="editorHeightSlider" type="range" min="10" max="777" value="777" step="1" oninput="setEditorHeightSlider(); saveToLocalStorage()">
   <input id="editorHeightNumber" type="number" value="777" style="width: 6ch;" oninput="setEditorHeightNum(); saveToLocalStorage()" tabindex="-1">
-
+	
   
 	<div>
 		
@@ -377,7 +377,9 @@
     const openProgramDialog = document.getElementById("openProgramDialog")
     const fontSavingMethodSelect = document.getElementById("fontSavingMethodSelect")
 		const importSaveFileInput = document.getElementById("importSaveFileInput")
-		
+		const editorHeightSlider = document.getElementById("editorHeightSlider")
+  	const editorHeightNumber = document.getElementById("editorHeightNumber")
+			
 		const codeDisplayBox = document.getElementById("codeDisplayBox")
 		const sizedHTMLIFrameBoxDisplay = document.getElementById("sizedHTMLIFrameBoxDisplay")
 		const codeDisplayAutoReload = document.getElementById("codeDisplayAutoReload")
@@ -783,6 +785,7 @@
       fontSelectionSelect.value = FileFromKey(activeFile).settings.font.mainFont
       fontOverlaySelectionSelect.value = FileFromKey(activeFile).settings.font.secondFont
 			fontSavingMethodSelect.value = settings.useShareSheet ? "shareSheet" : "aTag"
+			editorHeightSlider.value = settings.EditorWidth
 			
       toggleWorpWrap()
       disableAutocomplete()
@@ -790,6 +793,7 @@
       setFontMultiSlider()
       setFont()
 			setFontSavingMethod()
+			setEditorHeightSlider()
 
 			
 			codeDisplayAutoReload.checked = settings.codeDisplay.CodeDisplayAutoReload
@@ -806,8 +810,17 @@
   
     fileIdCount = 1;
     activeFile = 1;
-    settings = {wordWrap: true, AutoComplete: true, tabWidth: 3, FontMulti: 1, useShareSheet: false, codeDisplay: {HTMLDisplayWidth: "700", HTMLDisplayHeight: "300", CodeDisplayAutoReload: true, HTMLdisplayIframeEnabled: false}};
-    files = [{key: 1,  text: "", fileName: "new file", settings: {wordWrap: true, font: {mainFont: "scifi", secondFont: "none"}}}]
+    settings = {wordWrap: true, AutoComplete: true, tabWidth: 3, FontMulti: 1, useShareSheet: false, EditorWidth: 100; codeDisplay: {HTMLDisplayWidth: "700", HTMLDisplayHeight: "300", CodeDisplayAutoReload: true, HTMLdisplayIframeEnabled: false}};
+    
+		settings.EditorWidth = parseFloat(window.getComputedStyle(DisplaySideBySideDiv).height.slice(0, -2))
+			
+		if( isNaN(settings.EditorWidth) ) {
+      console.log("FAILED TO GET EDITOR HEIGHT, OH NO 3:   ", settings.EditorWidth)
+    }
+		editorHeightSlider.value = "" + settings.EditorWidth
+		editorHeightNumber.value = "" + settings.EditorWidth
+		
+		files = [{key: 1,  text: "", fileName: "new file", settings: {wordWrap: true, font: {mainFont: "scifi", secondFont: "none"}}}]
     fileList.innerHTML = "<button id='file1' onclick='openFile(1)' class='selectedFileButton'>new file</button>"
     }
     const urlParams = new URLSearchParams(window.location.search);
@@ -1273,9 +1286,52 @@
 	}
 
 
+	/* id="editorHeightSlider" type="range" min="10" max="777" value="777" step="1" oninput="setEditorHeightSlider(); saveToLocalStorage()">
+  id="editorHeightNumber" type="number" value="777" style="width: 6ch;" oninput="setEditorHeightNum(); saveToLocalStorage()" tabindex="-1">
+	DisplaySideBySideDiv */
+	function setEditorHeightNum() {
+      
+      const Val = parseFloat(editorHeightNumber.value)
+      if( isNaN(Val) ) {
+        return;
+      }
+      
+      editorHeightSlider.value = "" + Val
+      outputFontMulti(Val)
+      
+     
+    }
+    
+    function setEditorHeightSlider() {
+      
+      const Val = parseFloat(editorHeightSlider.value)
+      if( isNaN(Val) ) {
+        return;
+      }
+      
+      editorHeightNumber.value = "" + Val
+      outputFontMulti(Val)
+      
+     
+    }
+    
+    function outputEditorHeight(Val) {
+      
+      settings.EditorWidth = Val
+      DisplaySideBySideDiv.style.height = "" + Val + "px"
+    }  
 
-	  
-
+		function editorHeightSetMax() {
+			let hi = window.getComputedStyle(DisplaySideBySideDiv).height
+			let hello = hi.slice(0, -2);
+			hello = parseFloat(hello)
+			if( isNaN(Val) ) {
+        console.log("FAILED TO GET EDITOR HEIGHT, OH NO 3:   ", hi)
+				return;
+      }
+			editorHeightSlider.max = "" + (hello*1.4285714286) //this makes max = to 100vh
+		}
+		editorHeightSetMax()
 		
   </script>
   </body>
