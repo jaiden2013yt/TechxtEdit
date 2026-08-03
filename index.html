@@ -225,6 +225,9 @@
           <span>case sensitive: </span>
           <input id="replaceTextIsCaps" type="checkbox" checked>
         </div>
+		<div>
+          <button onclick="replaceTextFlip()">flip</button>
+        </div>
       </div>
     
       <div id="replateTextEndButtons">
@@ -572,7 +575,13 @@
       }
     }
     
-    
+  	function replaceTextFlip() { //swaps the value of the two
+			const ser = replaceTextSearcher.value
+			const rep = replaceTextReplacer.value
+
+			replaceTextSearcher.value = rep
+			replaceTextReplacer.value = ser
+		}
     
     
     
