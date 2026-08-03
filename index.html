@@ -307,9 +307,11 @@
 		<option value="aTag">download type &lt;a&gt; tag</option>
 		<option value="shareSheet">share sheet</option>
 	</select>
-  <!--
-  <span>text editor height</span>
-  <button onclick="TextEDitorHeight()">TEMP</button> -->
+
+	<span>editor height</span> 
+	<input id="editorHeightSlider" type="range" min="10" max="777" value="777" step="1" oninput="setEditorHeightSlider(); saveToLocalStorage()">
+  <input id="editorHeightNumber" type="number" value="777" style="width: 6ch;" oninput="setEditorHeightNum(); saveToLocalStorage()" tabindex="-1">
+
   
 	<div>
 		
