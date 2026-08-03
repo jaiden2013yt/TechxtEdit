@@ -34,8 +34,7 @@
           
           margin-top: 0.5rem;
           
-          padding-left: 0.5rem;
-          padding-bottom: 0.2rem;
+          
           margin-left: 0.5rem;
           margin-right: 0.5rem;
           margin-bottom: 1rem;
@@ -188,7 +187,10 @@
   <button onclick="removeActiveFile(); saveToLocalStorage()">remove active file</button>
   <input id="filenameInput" type="text" placeholder="filename" oninput="renameFile(); saveToLocalStorage()" value="new file" tabindex="-1"> 
 
-	<div id="DisplaySideBySideDiv" style="height: 70vh;">
+	<div id="DisplaySideBySideDiv" style="
+			height: 70vh; 
+			padding-left: 0.5rem;
+    	padding-bottom: 0.2rem;">
   	<p id="DISPLAY" class="DisplayCSS wrapEnabled" contenteditable="plaintext-only" style="tab-size: 4;"></p>
  	</div>
  
