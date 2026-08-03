@@ -785,7 +785,7 @@
       fontSelectionSelect.value = FileFromKey(activeFile).settings.font.mainFont
       fontOverlaySelectionSelect.value = FileFromKey(activeFile).settings.font.secondFont
 			fontSavingMethodSelect.value = settings.useShareSheet ? "shareSheet" : "aTag"
-			editorHeightSlider.value = settings.EditorWidth
+			editorHeightNumber.value = settings.EditorWidth
 			
       toggleWorpWrap()
       disableAutocomplete()
@@ -793,7 +793,7 @@
       setFontMultiSlider()
       setFont()
 			setFontSavingMethod()
-			setEditorHeightSlider()
+			setEditorHeightNum()
 
 			
 			codeDisplayAutoReload.checked = settings.codeDisplay.CodeDisplayAutoReload
@@ -1318,7 +1318,7 @@
     function outputEditorHeight(Val) {
       if (Val>10000) Val = 10000 //if val is too big u cant scroll to the bottom to fix it
 
-			console.log("VAL is", Val)
+			//console.log("VAL is", Val)
       settings.EditorWidth = Val
       DisplaySideBySideDiv.style.height = "" + Val + "px"
     }  
