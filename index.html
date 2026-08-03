@@ -1322,14 +1322,12 @@
     }  
 
 		function editorHeightSetMax() {
-			let hi = window.getComputedStyle(DisplaySideBySideDiv).height
-			let hello = hi.slice(0, -2);
-			hello = parseFloat(hello)
-			if( isNaN(hello) ) {
+			let hi = window.innerHeight
+			if( isNaN(hi) ) {
         console.log("FAILED TO GET EDITOR HEIGHT, OH NO 3:   ", hi)
 				return;
       }
-			editorHeightSlider.max = "" + (hello*1.4285714286) //this makes max = to 100vh
+			editorHeightSlider.max = "" + (hi) //this makes max = to approx 100vh
 		}
 		editorHeightSetMax()
 		
