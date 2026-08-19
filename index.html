@@ -1220,6 +1220,7 @@
 		console.log("in codeDisplayReloadEv :3")
 		if (HTMLdisplayIframe == null || !codeDisplayAutoReload.checked) return;
 		//HTMLdisplayIframe.style.display = "none"
+		DISPLAY.removeEventListener("input", codeDisplayReloadEv)
 		HTMLdisplayIframe.remove()
 		enableCodeDisplay()
 	}
