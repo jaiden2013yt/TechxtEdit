@@ -1219,8 +1219,9 @@
 	function codeDisplayReloadEv() {
 		console.log("in codeDisplayReloadEv :3")
 		if (HTMLdisplayIframe == null || !codeDisplayAutoReload.checked) return;
-		HTMLdisplayIframe.style.display = "none"
-		HTMLdisplayIframe.contentWindow.location.reload();
+		//HTMLdisplayIframe.style.display = "none"
+		HTMLdisplayIframe.remove()
+		enableCodeDisplay()
 	}
 
 	function setCodeDisplaySideBySide() {
