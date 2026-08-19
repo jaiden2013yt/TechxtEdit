@@ -14,4 +14,5 @@ if you find any bugs or have anying you would want to see in this *please* make 
 - ASSINATE SERVICE WORKER BUTTON, AND A DISABLE CHECKBOX
 - ~~flip option in the replace text thing :3~~ I need to make the css better
 - reset settings button
+- automatic size for html preview option 
 - i will add more later
