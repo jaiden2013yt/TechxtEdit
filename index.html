@@ -321,18 +321,18 @@
 			
 			<span>enable preview</span>
 			<input id="codeDisplayEnable" onchange="enableCodeDisplay()" type="checkbox">
-			
-			<span>width(px): </span>
-			<input id="HTMLDisplayWidth" oninput="HTMLDisplaySetWidth()" type="number" tabindex="-1" value="700">
+			<div id="codeDisplaySettings">
+				<span>width(px): </span>
+				<input id="HTMLDisplayWidth" oninput="HTMLDisplaySetWidth()" type="number" tabindex="-1" value="700">
 
-			<span>height(px): </span>
-			<input id="HTMLDisplayHeight" oninput="HTMLDisplaySetHeight()" type="number" tabindex="-1" value="300">
+				<span>height(px): </span>
+				<input id="HTMLDisplayHeight" oninput="HTMLDisplaySetHeight()" type="number" tabindex="-1" value="300">
 
-			<button onclick="codeDisplayReloadBTN('BTN')">reload</button>
+				<button onclick="codeDisplayReloadBTN('BTN')">reload</button>
 
-			<span>auto reload: </span>
-			<input id="codeDisplayAutoReload" onchange="setCodeDisplayAutoReload()" type="checkbox" checked>
-
+				<span>auto reload: </span>
+				<input id="codeDisplayAutoReload" onchange="setCodeDisplayAutoReload()" type="checkbox" checked>
+			</div>
 			<span>side by side: </span>
 			<input id="codeDisplaySideBySide" onchange="setCodeDisplaySideBySide()" type="checkbox">
 		</div>
@@ -382,6 +382,7 @@
   	const editorHeightNumber = document.getElementById("editorHeightNumber")
 			
 		const codeDisplayBox = document.getElementById("codeDisplayBox")
+		const codeDisplaySettings = document.getElementById("codeDisplaySettings")
 		const sizedHTMLIFrameBoxDisplay = document.getElementById("sizedHTMLIFrameBoxDisplay")
 		const codeDisplayAutoReload = document.getElementById("codeDisplayAutoReload")
 		const HTMLDisplayHeight = document.getElementById("HTMLDisplayHeight")
