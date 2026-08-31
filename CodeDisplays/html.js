@@ -12,23 +12,32 @@
 	codeDisplayHTML.enable = () => {
 		codeDisplaySettings.innerHTML = `
 		<span>width(px): </span>
-		<input id="HTMLDisplayWidth" oninput="HTMLDisplaySetWidth()" type="number" tabindex="-1" value="${700}">
+		<input id="HTMLDisplayWidth" oninput="HTMLDisplaySetWidth()" type="number" tabindex="-1" value="${settings.codeDisplay.HTMLDisplayWidth}">
 
 		<span>height(px): </span>
-		<input id="HTMLDisplayHeight" oninput="HTMLDisplaySetHeight()" type="number" tabindex="-1" value="${300}">
+		<input id="HTMLDisplayHeight" oninput="HTMLDisplaySetHeight()" type="number" tabindex="-1" value="${settings.codeDisplay.HTMLDisplayHeight}">
 
 		<button onclick="codeDisplayReloadBTN('BTN')">reload</button>
 
 		<span>auto reload: </span>
-		<input id="codeDisplayAutoReload" onchange="setCodeDisplayAutoReload()" type="checkbox" ${checked}>` //FUCK IT WE INNERHTML :3
+		<input id="codeDisplayAutoReload" onchange="setCodeDisplayAutoReload()" type="checkbox" ${settings.codeDisplay.CodeDisplayAutoReload ? "checked" : "" }>` //FUCK IT WE INNERHTML :3
 
 		codeDisplayBox.innerHTML = '<div id="sizedHTMLIFrameBoxDisplay"></div>'
+
+		enableHTMLIframeDisplay(true)
 	}
 
-	function enableCodeDisplay() {
-		settings.codeDisplay.HTMLdisplayIframeEnabled = codeDisplayEnable.checked
+	codeDisplayHTML.disable = () => {
+
+	} //AAAAAADDDDDDD MEEEEEEE HEREE
+
+
+
+
+	function enableHTMLIframeDisplay(isItEnabledHTMLIFrame) {
+		settings.codeDisplay.HTMLdisplayIframeEnabled = isItEnabledHTMLIFrame
 		
-		if(codeDisplayEnable.checked) {
+		if(isItEnabledHTMLIFrame) {
 			
 			
 			sizedHTMLIFrameBoxDisplay.innerHTML = "" //delete the iframe(just in case)
@@ -136,16 +145,4 @@
 		enableCodeDisplay()                            //then renable it
 	}
 
-	function setCodeDisplaySideBySide() {
-		/* dom refs: codeDisplaySideBySide.checked DisplaySideBySideDiv / codeDisplayBox */
-
-		//we are just adding classes and appending codeDisplayBox to different places, very simple
-
-		if (codeDisplaySideBySide.checked) {
-			DisplaySideBySideDiv.appendChild(codeDisplayBox)
-			DisplaySideBySideDiv.classList.add("DisplaySideBySideDivSideBySideMode")
-		} else {
-			stimulatingCodeDisplayBoxContairer.appendChild(codeDisplayBox)
-			DisplaySideBySideDiv.classList.remove("DisplaySideBySideDivSideBySideMode")
-		}
 	
