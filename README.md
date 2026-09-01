@@ -1,6 +1,6 @@
 # TechxtEdit 
 TechxtEdit is a text editor ive been making :3  
-if you find any bugs or have anying you would want to see in this *please* make a `issue` about that x3
+if you find any bugs or have anying you would want to see in this *please*, *please* make a `issue` about that x3, and no need to be scared to make one, just do it!!
 # things i want to add
 - indexedDB support
 - ~~a use share sheet setting~~ added owo ;3
