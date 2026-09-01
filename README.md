@@ -13,6 +13,8 @@ if you find any bugs or have anying you would want to see in this *please* make 
 - ~~export save~~ ~~and import save~~
 - ASSINATE SERVICE WORKER BUTTON, AND A DISABLE CHECKBOX
 - ~~flip option in the replace text thing :3~~ I need to make the css better
-- reset settings button
-- automatic size for html preview option 
+- reset settings button                                   \*
+- automatic size for html preview option                  \*
+- make it so multiple files cant have the save name       \*
+- file reordering                                         \*
 - i will add more later
