@@ -2,6 +2,7 @@
 TechxtEdit is a text editor ive been making :3  
 if you find any bugs or have anying you would want to see in this *please*, *please* make a `issue` about that x3, and no need to be scared to make one, just do it!!
 # things i want to add
+(🔴=really hard, im not doing this | 🟡=hard, but probably doable | 🔵=easy, going to add this soonish | none=done )
 - indexedDB support 🔴
 - ~~a use share sheet setting~~ added owo ;3
 - proper tab selection support 🔴
