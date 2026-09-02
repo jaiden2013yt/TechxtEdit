@@ -786,7 +786,7 @@
 			
       files.forEach((elment) => {
         fileList.innerHTML = fileList.innerHTML + "<button id='file" + elment.key + "' onclick='openFile(" + elment.key + ")'>" + elment.fileName + "</button>"
-      	if(elment.settings = "") {
+      	if(elment.settings === "") {
 					elment.settings = {wordWrap: true, font: {mainFont: "scifi", secondFont: "none"}}
 				}
 			})
