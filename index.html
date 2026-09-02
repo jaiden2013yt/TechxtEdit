@@ -198,6 +198,7 @@
   <button onclick="copyCodeYAY(); saveToLocalStorage()">copy</button>
   <button onclick="saveTextToFiles(); saveToLocalStorage()">save file</button>
   <button onclick="removeStorage()">remove storage</button>
+	<button onclick="removeSettings()">remove settings :3</button>
   <button onclick="exportSave()">export save</button>
 	<button onclick="importSaveFileInput.click()">import save</button> 
 		<input id="importSaveFileInput" type="file" style="display: none;" onchange="importSave()">
@@ -772,15 +773,23 @@
     
     if (localStorage.getItem("StoreData") !== null) {
       const dataFromStorage = JSON.parse(localStorage.getItem("StoreData"))
-      
+			
       fileIdCount = dataFromStorage.fileIdCount
       activeFile = dataFromStorage.activeFile
       files = dataFromStorage.FileContent
       settings = dataFromStorage.settings
-      
+
+			if (settings === "") {
+				settings = {wordWrap: true, AutoComplete: true, tabWidth: 3, FontMulti: 1, useShareSheet: false, EditorWidth: 10, codeDisplay: {HTMLDisplayWidth: "700", HTMLDisplayHeight: "300", CodeDisplayAutoReload: true, HTMLdisplayIframeEnabled: false}}
+			}
+
+			
       files.forEach((elment) => {
         fileList.innerHTML = fileList.innerHTML + "<button id='file" + elment.key + "' onclick='openFile(" + elment.key + ")'>" + elment.fileName + "</button>"
-      })
+      	if(elment.settings = "") {
+					elment.settings = {wordWrap: true, font: {mainFont: "scifi", secondFont: "none"}}
+				}
+			})
       
       document.getElementById("file" + activeFile).classList.add("selectedFileButton")
       DISPLAY.innerText = FileFromKey(activeFile).text
@@ -923,7 +932,18 @@
         window.location.reload()
       }
     }
-    
+
+	function removeSettings() {
+      if (window.confirm("are you sure you want to delete ALL setting, this will delete setting. this CANNOT be undone.")) {
+        settings = ""
+				files.forEach((f) => {
+					f.settings = ""
+				})
+				saveToLocalStorage()
+        window.location.reload()
+      }
+    }
+	  
     function disableAutocomplete() {
       settings.AutoComplete = autocorrectCheckbox.checked
       if (!autocorrectCheckbox.checked) {
