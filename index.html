@@ -1214,7 +1214,20 @@
 	}
 
 
+	function HTMLDisplaySetAutoSized() {
+		settings.codeDisplay.HTMLDisplayAutoSized = HTMLDisplayAutoSize.checked
+		if(HTMLDisplayAutoSize.checked) {
+			if (HTMLdisplayIframe) {  
+				if (codeDisplaySideBySide.checked) {
 
+				} else {
+
+				}
+			}
+		} else {
+
+		}
+	}
 	function HTMLDisplaySetHeight() {
 			settings.codeDisplay.HTMLDisplayHeight = HTMLDisplayHeight.value
 		if (HTMLdisplayIframe) {                //set it if the frame exists right now
