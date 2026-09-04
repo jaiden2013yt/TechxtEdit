@@ -1162,8 +1162,7 @@
 			HTMLdisplayIframe = document.createElement("iframe")  //new iframe
 			HTMLdisplayIframe.width = HTMLDisplayWidth.value      //set width
 			HTMLdisplayIframe.height = HTMLDisplayHeight.value    //set height
-			HTMLdisplayIframe.sandbox = "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-top-navigation-by-user-activation"
-			// set sandbox value
+			
 			
 			HTMLdisplayIframe.src = "about:blank"                 //set it to a blank page
 			
@@ -1188,7 +1187,10 @@
 					HTMLdisplayIframe.contentDocument.open();
 	  			HTMLdisplayIframe.contentDocument.write(DISPLAY.innerText);
 	  			HTMLdisplayIframe.contentDocument.close();
-					
+
+					HTMLdisplayIframe.sandbox = "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-top-navigation-by-user-activation"
+					// set sandbox value, setting this after *might* be a problem, but its probably too hard for anyone reading this code to exploit
+				
 					HTMLdisplayIframe.style.display = "inline"
 
 					if (codeDisplayAutoReload.checked) {
