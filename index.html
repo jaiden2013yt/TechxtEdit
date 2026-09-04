@@ -820,10 +820,9 @@
 			codeDisplayEnable.checked = settings.codeDisplay.HTMLdisplayIframeEnabled
 
 			setCodeDisplayAutoReload()
-			enableCodeDisplay() 
 			HTMLDisplaySetHeight() 
 			HTMLDisplaySetWidth()
-			enableCodeDisplay()
+			setTimeout(enableCodeDisplay, 100*5) //if the iframe has code the lags the page to death, this will give 5 secs on page refresh to disable it
     } else {
   
     fileIdCount = 1;
@@ -1163,7 +1162,8 @@
 			HTMLdisplayIframe = document.createElement("iframe")  //new iframe
 			HTMLdisplayIframe.width = HTMLDisplayWidth.value      //set width
 			HTMLdisplayIframe.height = HTMLDisplayHeight.value    //set height
-
+			HTMLdisplayIframe.sandbox = "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-top-navigation-by-user-activation"
+			// set sandbox value
 			
 			HTMLdisplayIframe.src = "about:blank"                 //set it to a blank page
 			
@@ -1206,7 +1206,7 @@
 		} else {
 			
 			//get rid of the iframe.
-			HTMLdisplayIframe = undefined
+			HTMLdisplayIframe = undefined 
 			sizedHTMLIFrameBoxDisplay.innerHTML = ""
 			DISPLAY.removeEventListener("input", codeDisplayReloadEv)
 			sizedHTMLIFrameBoxDisplay.style.height = "0px"
