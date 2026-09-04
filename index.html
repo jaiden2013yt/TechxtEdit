@@ -822,7 +822,7 @@
 			setCodeDisplayAutoReload()
 			HTMLDisplaySetHeight() 
 			HTMLDisplaySetWidth()
-			setTimeout(enableCodeDisplay, 100*5) //if the iframe has code the lags the page to death, this will give 5 secs on page refresh to disable it
+			enableCodeDisplay() //remove race contions i hope //if the iframe has code the lags the page to death, this will give 5 secs on page refresh to disable it
     } else {
   
     fileIdCount = 1;
