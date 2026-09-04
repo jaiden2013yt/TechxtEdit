@@ -1188,7 +1188,10 @@
 					HTMLdisplayIframe.contentDocument.open();
 	  			HTMLdisplayIframe.contentDocument.write(DISPLAY.innerText);
 	  			HTMLdisplayIframe.contentDocument.close();
-					
+
+					HTMLdisplayIframe.sandbox = "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-top-navigation-by-user-activation"
+					// now that we injected the code we can  sandbox the iframe (yes this IS needed to be done after
+				
 					HTMLdisplayIframe.style.display = "inline"
 
 					if (codeDisplayAutoReload.checked) {
