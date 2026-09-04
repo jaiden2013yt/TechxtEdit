@@ -820,9 +820,10 @@
 			codeDisplayEnable.checked = settings.codeDisplay.HTMLdisplayIframeEnabled
 
 			setCodeDisplayAutoReload()
+			enableCodeDisplay() 
 			HTMLDisplaySetHeight() 
 			HTMLDisplaySetWidth()
-			enableCodeDisplay() //remove race contions i hope //if the iframe has code the lags the page to death, this will give 5 secs on page refresh to disable it
+			enableCodeDisplay()
     } else {
   
     fileIdCount = 1;
@@ -1162,7 +1163,7 @@
 			HTMLdisplayIframe = document.createElement("iframe")  //new iframe
 			HTMLdisplayIframe.width = HTMLDisplayWidth.value      //set width
 			HTMLdisplayIframe.height = HTMLDisplayHeight.value    //set height
-			
+
 			
 			HTMLdisplayIframe.src = "about:blank"                 //set it to a blank page
 			
@@ -1187,10 +1188,7 @@
 					HTMLdisplayIframe.contentDocument.open();
 	  			HTMLdisplayIframe.contentDocument.write(DISPLAY.innerText);
 	  			HTMLdisplayIframe.contentDocument.close();
-
-					//HTMLdisplayIframe.sandbox = "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-top-navigation-by-user-activation"
-					// set sandbox value, setting this after *might* be a problem, but its probably too hard for anyone reading this code to exploit
-				
+					
 					HTMLdisplayIframe.style.display = "inline"
 
 					if (codeDisplayAutoReload.checked) {
@@ -1208,7 +1206,7 @@
 		} else {
 			
 			//get rid of the iframe.
-			HTMLdisplayIframe = undefined 
+			HTMLdisplayIframe = undefined
 			sizedHTMLIFrameBoxDisplay.innerHTML = ""
 			DISPLAY.removeEventListener("input", codeDisplayReloadEv)
 			sizedHTMLIFrameBoxDisplay.style.height = "0px"
@@ -1402,7 +1400,6 @@
   </script>
   </body>
 </html>
-
 
 
 
