@@ -283,6 +283,7 @@
     <option value="minecraft">minecraft (Mojangles & GNU Unifont)</option>
     <option value="Nunito">bubbly (Nunito)</option>
     <option value="Tangerine">fancy (Tangerine)</option>
+	<option value="comicNeue"> comic neue(like comic sans)</option>
   </select>
   <span>overlay font: </span>
   <select onchange="setFont(); saveToLocalStorage()" id="fontOverlaySelectionSelect" tabindex="-1">
@@ -729,7 +730,8 @@
       sansSerif: {st: "sans-serif", wg: "400"},
       minecraft: {st: "'Minecraft', 'Unifont', sans-serif", wg: "400"},
       Nunito: {st: "'Nunito', sans-serif", wg: "700"},
-      Tangerine: {st: "'Tangerine', cursive, sans-serif", wg: "700"}
+      Tangerine: {st: "'Tangerine', cursive, sans-serif", wg: "700"},
+	  	comicNeue: {st: "'Comic Neue', cursive", wg: "700"},
     }
     const fontBonuses = {
       none: "",
