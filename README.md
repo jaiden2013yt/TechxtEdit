@@ -18,4 +18,5 @@ if you find any bugs or have anying you would want to see in this *please*, *ple
 - automatic size for html preview option                  🔵
 - make it so multiple files cant have the save name       🔵
 - file reordering                                         🔵
+- typing speed tracker with progress and stats and stuff  🔵
 - i will add more later
