@@ -1225,7 +1225,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 				
 				//checks 
 				if((HTMLdisplayIframe.contentDocument == null) && (HTMLdisplayIframe.getAttribute('sandbox') === null)) { //check if HTMLdisplayIframe.contentDocument exists? if it sandboxxed this will also be null so we also check for that
-					alert("failed to load iframe, try again" + HTMLdisplayIframe.getAttribute('sandbox')) 
+					alert("failed to load iframe, try again") 
 					return
 				} 
 				if(!firstLoad) { //put it back on the normal path incase it ends up here
