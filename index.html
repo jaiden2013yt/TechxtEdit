@@ -907,7 +907,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
       files.push({key: fileIdCount, text: "", fileName: "new file", settings: {wordWrap: settings.wordWrap, font: {mainFont: "scifi", secondFont: "none"}}})
 			
 			renameFilesWithSameName()
-      fileList.innerHTML = fileList.innerHTML + "<button id='file" + fileIdCount + "' onclick='openFile(" + FileFromKey(fileIdCount).fileName + ")'>" + + "</button>"
+      fileList.innerHTML = fileList.innerHTML + "<button id='file" + fileIdCount + "' onclick='openFile(" + fileIdCount + ")'>" + FileFromKey(fileIdCount).fileName + "</button>"
       openFile(fileIdCount)
     }
     
