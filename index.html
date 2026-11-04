@@ -1502,8 +1502,8 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 					//use spread instead if remaking it like max(1, ...samies) we cant do that cuz v is a array instead of a number
 					document.body.append(JSON.stringify(sameies))
 					sameies.forEach((v) => {
-						if(v[1] > largest) {
-							largest = v[1]
+						if(Number(v[1]) > Number(largest)) {
+							largest = Number(v[1])
 						}
 					})
 					CutFileArray[i] = [f.fileName, f.fileName + " (" + ((1*largest)+1) + ")"] //update it :3
