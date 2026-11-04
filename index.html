@@ -1468,7 +1468,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 				if (explored.includes(f.fileName)) {
 					//THESE ARE THE FILES WE NEED TO CHANGE, this is the very complex part
 					//now lets see how many identicle
-					let sameies = CutFileArray.filter((item) => {
+					let sameies = structuredClone(CutFileArray).filter((item) => {
 						return (item[0] === f.fileName); //if the file is named file (3) we might get something like file (3) (4) instead of file (3) (2) but its okay <3 
 					})
 					//go thru sameies and get the number before the last char
@@ -1507,7 +1507,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 					files[i].filename = f.fileName + " (" + ((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
 					//we dont save to localstorage here to prevent muliple savings from happening :3
 					CutFileArray[i] = [f.fileName, files[i].filename] //update it :3
-					explored.push(files[i].filename);                 //here too
+					explored.push(files[i].fileName);                 //here too
 				} else {
 					explored.push(f.fileName);
 				}
