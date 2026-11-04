@@ -1453,14 +1453,14 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 		//files that are not the same as another one are not modified , files that are the first in a set of ones that are the same are also not modified :3
 
 			let CutFileArray = []
-		  files.forEach(f) {
+		  files.forEach((f) => {
 		  	CutFileArray.push([
 					f.fileName.replace(/ \(\d+\)$/, ""), // remove SPACE(NUMBER) at the end of the name
 					f.fileName,
 				])
-			}
+			})
 			let explored = []
-			files.forEach(f, i) {
+			files.forEach((f, i) => {
 				if (explored.includes(f.fileName)) {
 					//THESE ARE THE FILES WE NEED TO CHANGE, this is the very complex part
 					//now lets see how many identicle
@@ -1477,7 +1477,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 						}
 						//now we see if it ends in a number, if so we replace it with the number, otherwise empty string
 						let matchs = /\d+$/.exec(v[1])
-						if(matches === null) {
+						if(matchs === null) {
 							v[1] = null //the evil scary goblins tried to """hurt""" for this one 3: //they were right
 							return;
 						} 
@@ -1506,7 +1506,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 				} else {
 					explored.push(f.fileName);
 				}
-			}
+			})
 	  }
   </script>
   </body>
