@@ -1509,9 +1509,10 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 					console.log("EXPLORED:", explored);
 					console.log("LARGEST:", largest);
 					console.log("sameies:", sameies);
-					files[i].fileName = f.fileName + " (" + ((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
+					CutFileArray[i] = [f.fileName, f.fileName + " (" + ((1*largest)+1) + ")"] //update it :3
+					f.fileName = f.fileName + " (" + ((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
 					//we dont save to localstorage here to prevent muliple savings from happening :3
-					CutFileArray[i] = [f.fileName, files[i].fileName] //update it :3
+					
 					explored.push(files[i].fileName);                 //here too
 				} else {
 					explored.push(f.fileName);
