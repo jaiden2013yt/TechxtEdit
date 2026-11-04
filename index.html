@@ -1507,7 +1507,19 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 					explored.push(f.fileName);
 				}
 			})
-	  }
+
+		}
+
+
+	 function updateVisualFileNames() {
+		//lets now update the display list and input elm :3
+		//this is seperate cuz often we dont need this :3
+		  files.forEach((element, i) => {
+      	fileList.children[i].innerText = element.fileName //innerText is slow, BUT \n -> <br>   so its worth it :3
+			})
+			
+			filenameInput.value = FileFromKey(activeFile).fileName
+	 }
   </script>
   </body>
 </html>
