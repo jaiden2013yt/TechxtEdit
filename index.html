@@ -832,6 +832,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 				settings.EditorWidth = parseFloat(window.getComputedStyle(DisplaySideBySideDiv).height.slice(0, -2))
 			}
 
+			renameFilesWithSameName()
 			
       files.forEach((elment) => {
         fileList.innerHTML = fileList.innerHTML + "<button id='file" + elment.key + "' onclick='openFile(" + elment.key + ")'>" + elment.fileName + "</button>"
@@ -872,6 +873,8 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			HTMLDisplaySetHeight() 
 			HTMLDisplaySetWidth()
 			setTimeout(enableCodeDisplay, 1000*1) //prevent code that crashes the Web-Site from preventing u from doing anything 3:
+
+			saveToLocalStorage()
     } else {
   
     fileIdCount = 1;
@@ -902,7 +905,8 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
     function createNewFile() {
       fileIdCount++
       files.push({key: fileIdCount, text: "", fileName: "new file", settings: {wordWrap: settings.wordWrap, font: {mainFont: "scifi", secondFont: "none"}}})
-      
+			
+			renameFilesWithSameName()
       fileList.innerHTML = fileList.innerHTML + "<button id='file" + fileIdCount + "' onclick='openFile(" + fileIdCount + ")'>new file</button>"
       openFile(fileIdCount)
     }
@@ -933,7 +937,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
       
       document.getElementById("file" + fileID).classList.add("selectedFileButton")
       
-     	saveToLocalStorage()
+     	saveToLocalStorage() //TODO REMIVE TODO REMOVE TODO REMOVE ADD TO THE ELEEMTN YESH REMOVE IT YEAH DO IT
     }
     
     function removeActiveFile() {
@@ -957,10 +961,10 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
     }
     
     function renameFile() {
-      document.getElementById("file" + activeFile).innerText = filenameInput.value
       FileFromKey(activeFile).fileName = filenameInput.value
-      
-     
+			renameFilesWithSameName()
+			filenameInput.value = FileFromKey(activeFile).fileName
+			document.getElementById("file" + activeFile).innerText = FileFromKey(activeFile).fileName
     }
     
     function saveToLocalStorage() {
