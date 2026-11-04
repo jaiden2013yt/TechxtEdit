@@ -1447,7 +1447,67 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			editorHeightSlider.max = "" + (hi) //this makes max = to approx 100vh
 		}
 		editorHeightSetMax()
-		
+
+	  renameFilesWithSameName() {
+		//if a file is named "FILE" then later in the ordering shown to the user there is another file called "FILE" , it will become "FILE" and "FILE (2)" 
+		//files that are not the same as another one are not modified , files that are the first in a set of ones that are the same are also not modified :3
+
+			let CutFileArray = []
+		  files.forEach(f) {
+		  	CutFileArray.push([
+					f.fileName.replace(/ \(\d+\)$/, ""), // remove SPACE(NUMBER) at the end of the name
+					f.fileName,
+				])
+			}
+			let explored = []
+			files.forEach(f, i) {
+				if (explored.includes(f.fileName)) {
+					//THESE ARE THE FILES WE NEED TO CHANGE, this is the very complex part
+					//now lets see how many identicle
+					let sameies = CutFileArray.filter((item) => {
+						return (item[0] === f.fileName); //if the file is named file (3) we might get something like file (3) (4) instead of file (3) (2) but its okay <3 
+					})
+					//go thru sameies and get the number before the last char
+					sameies.forEach((v) => {
+						if(v[1].slice(-1) === ")") { //if last char is parenths 
+						v[1] = v[1].slice(0, -1) //remove last char from them so the number is rly at the end
+						} else {
+							v[1] = null //we dont need it anymore
+							continue;
+						}
+						//now we see if it ends in a number, if so we replace it with the number, otherwise empty string
+						let matchs = /\d+$/.exec(v[1])
+						if(matches === null) {
+							v[1] = null //the evil scary goblins tried to """hurt""" for this one 3: //they were right
+							continue;
+						} 
+						v[1] = matchs[0] //the number 
+						
+					})
+					//remove the null values
+					sameies = sameies.filter((item) => {
+						return item[1] !== null
+					})
+
+					//now find the largest number
+					let largest = 1;
+
+					//use spread instead if remaking it like max(1, ...samies) we cant do that cuz v is a array instead of a number
+					sameies.forEach((v) => {
+						if(v[1] > largest) {
+							largest = v[1]
+						}
+					})
+
+					files[i].filename = f.fileName + " (" + (((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
+					//we dont save to localstorage here to prevent muliple savings from happening :3
+					CutFileArray[i] = [f.fileName, files[i].filename] //update it :3
+					explored.push(files[i].filename);                 //here too
+				} else {
+					explored.push(f.fileName);
+				}
+			}
+	  }
   </script>
   </body>
 </html>
