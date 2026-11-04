@@ -1448,7 +1448,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 		}
 		editorHeightSetMax()
 
-	  renameFilesWithSameName() {
+	  function renameFilesWithSameName() {
 		//if a file is named "FILE" then later in the ordering shown to the user there is another file called "FILE" , it will become "FILE" and "FILE (2)" 
 		//files that are not the same as another one are not modified , files that are the first in a set of ones that are the same are also not modified :3
 
@@ -1473,13 +1473,13 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 						v[1] = v[1].slice(0, -1) //remove last char from them so the number is rly at the end
 						} else {
 							v[1] = null //we dont need it anymore
-							continue;
+							return;
 						}
 						//now we see if it ends in a number, if so we replace it with the number, otherwise empty string
 						let matchs = /\d+$/.exec(v[1])
 						if(matches === null) {
 							v[1] = null //the evil scary goblins tried to """hurt""" for this one 3: //they were right
-							continue;
+							return;
 						} 
 						v[1] = matchs[0] //the number 
 						
@@ -1499,7 +1499,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 						}
 					})
 
-					files[i].filename = f.fileName + " (" + (((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
+					files[i].filename = f.fileName + " (" + ((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
 					//we dont save to localstorage here to prevent muliple savings from happening :3
 					CutFileArray[i] = [f.fileName, files[i].filename] //update it :3
 					explored.push(files[i].filename);                 //here too
