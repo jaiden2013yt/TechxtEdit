@@ -1505,7 +1505,10 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 							largest = v[1]
 						}
 					})
-
+					console.log("CURRENT:", f.fileName);
+					console.log("EXPLORED:", explored);
+					console.log("LARGEST:", largest);
+					console.log("sameies:", samies);
 					files[i].fileName = f.fileName + " (" + ((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
 					//we dont save to localstorage here to prevent muliple savings from happening :3
 					CutFileArray[i] = [f.fileName, files[i].fileName] //update it :3
