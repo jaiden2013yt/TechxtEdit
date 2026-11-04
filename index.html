@@ -1498,17 +1498,14 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 
 					//now find the largest number
 					let largest = 1;
-
+					
 					//use spread instead if remaking it like max(1, ...samies) we cant do that cuz v is a array instead of a number
+					document.body.append(JSON.stringify(sameies))
 					sameies.forEach((v) => {
 						if(v[1] > largest) {
 							largest = v[1]
 						}
 					})
-					console.log("CURRENT:", f.fileName);
-					console.log("EXPLORED:", explored);
-					console.log("LARGEST:", largest);
-					console.log("sameies:", sameies);
 					CutFileArray[i] = [f.fileName, f.fileName + " (" + ((1*largest)+1) + ")"] //update it :3
 					f.fileName = f.fileName + " (" + ((1*largest)+1) + ")" //we add one to largest and also need to make it a number for that
 					//we dont save to localstorage here to prevent muliple savings from happening :3
