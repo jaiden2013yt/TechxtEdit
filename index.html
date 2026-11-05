@@ -162,7 +162,20 @@
 			#codeDisplayBox {
 				overflow: scroll; 
 			}
-		
+
+			.AutoResizeIFrameELMCSS {
+				width: 100% !importent; /* we need to override the atributes so wecuse !importent */
+				height: 100% !importent;
+				border: none; /*sry, but no one loves u border */
+			}
+			
+			.AutoResizeIFrameCSS {
+				width: 100%;    
+				height: min(100%, 90svh);
+			}
+			.inputTextElmGrayedOut {
+				background-color: #333333;
+			}
     </style>
     
     <script src="https://github.com/nassiry/base64plus/releases/latest/download/base64Plus.umd.js"></script>
@@ -337,6 +350,8 @@
 			</div>
 			<span>side by side: </span>
 			<input id="codeDisplaySideBySide" onchange="setCodeDisplaySideBySide()" type="checkbox">
+			<span>auto resize: </span>
+			<input id="codeDisplayAutoResize" onchange="setCodeDisplayAutoResize()" type="checkbox">
 		</div>
 
 		<div id="stimulatingCodeDisplayBoxContairer">
@@ -439,6 +454,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 		const codeDisplaySideBySide = document.getElementById("codeDisplaySideBySide")
 		const DisplaySideBySideDiv = document.getElementById("DisplaySideBySideDiv")
 		const stimulatingCodeDisplayBoxContairer = document.getElementById("stimulatingCodeDisplayBoxContairer")
+		const codeDisplayAutoResize = document.getElementById("codeDisplayAutoResize")
 
 		
 		const encodeDecodeDialog = document.getElementById("encodeDecodeDialog")
@@ -1363,8 +1379,25 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 	}
 
 
+	/*<span>auto resize: </span>
+			<input id="codeDisplayAutoResize" onchange="setCodeDisplayAutoResize()" type="checkbox">*/
 
+	function setCodeDisplayAutoResize() {
 
+		if(codeDisplayAutoResize.checked) {
+			//AutoResizeIFrameELMCSS AutoResizeIFrameCSS inputTextElmGrayedOut 
+			HTMLdisplayIframe?.classList.add("AutoResizeIFrameELMCSS")
+			sizedHTMLIFrameBoxDisplay?.classList.add("AutoResizeIFrameCSS") //?. meams if HTMLdisplayIframe exists
+			HTMLDisplayWidth.classList.add("inputTextElmGrayedOut")
+			HTMLDisplayHeight.classList.add("inputTextElmGrayedOut")
+		} else {
+			HTMLdisplayIframe?.classList.remove("AutoResizeIFrameELMCSS")
+			sizedHTMLIFrameBoxDisplay?.classList.remove("AutoResizeIFrameCSS") //?. meams if element exists
+			HTMLDisplayWidth.classList.remove("inputTextElmGrayedOut")
+			HTMLDisplayHeight.classList.remove("inputTextElmGrayedOut")
+		}
+
+	}
 
 	/* 
 			onclick="showEncodeDecodeModal()">encode/decode</button>
