@@ -1490,9 +1490,6 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 						return (item[0] === f.fileName); //if the file is named file (3) we might get something like file (3) (4) instead of file (3) (2) but its okay <3 
 					})
 					//go thru sameies and get the number before the last char
-					console.log(CutFileArray, sameies)
-					console.log("CFA snapshot:", JSON.stringify(CutFileArray));
-					console.log("Sameies snapshot:", JSON.stringify(sameies));
 					sameies.forEach((v) => {
 						if(v[1].slice(-1) === ")") { //if last char is parenths 
 						v[1] = v[1].slice(0, -1) //remove last char from them so the number is rly at the end
@@ -1518,7 +1515,6 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 					let largest = 1;
 					
 					//use spread instead if remaking it like max(1, ...samies) we cant do that cuz v is a array instead of a number
-					document.body.append(JSON.stringify(sameies))
 					sameies.forEach((v) => {
 						if(Number(v[1]) > Number(largest)) {
 							largest = Number(v[1])
