@@ -474,7 +474,23 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
         }
         
       } else {
-        
+
+				try {
+          pawersted = JSON.parse(DISPLAY.innerText)   //parse the json
+        } catch(bugs) {                               //if u cant parse it lets just leave
+          alert("arrg ;w;, your aweseom jayson failed to parse :( :((((")
+					console.log("json styningifaction: " + bugs)
+					return;
+        }
+				
+				DISPLAY.innerText =               //set DISPLAY,innertext BTW
+				JSON.stringify(                   //stringify it with the following setting
+					pawersted,                      //the json is the json from before
+					null,                           //dont do werid extra shit
+					"\t"                            //PRETTY PRINT!!! using tabs
+				)
+			/*
+				//you were awesome, you were loved, but u are not needed anymore *kiils you*
         // parse my paws :3
         
        let pawersted = ""
@@ -551,7 +567,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
         })
         
         DISPLAY.innerText = pawersted
-        
+        */
       }
     }
     
