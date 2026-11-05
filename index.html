@@ -348,12 +348,12 @@
 				<button onclick="codeDisplayReloadBTN('BTN')">reload</button>
 
 				<span>auto reload: </span>
-				<input id="codeDisplayAutoReload" onchange="setCodeDisplayAutoReload()" type="checkbox" checked>
+				<input id="codeDisplayAutoReload" onchange="setCodeDisplayAutoReload(); saveToLocalStorage()" type="checkbox" checked>
 			</div>
 			<span>side by side: </span>
 			<input id="codeDisplaySideBySide" onchange="setCodeDisplaySideBySide()" type="checkbox">
 			<span>auto resize: </span>
-			<input id="codeDisplayAutoResize" onchange="setCodeDisplayAutoResize()" type="checkbox">
+			<input id="codeDisplayAutoResize" onchange="setCodeDisplayAutoResize(); saveToLocalStorage()" type="checkbox">
 		</div>
 
 		<div id="stimulatingCodeDisplayBoxContairer">
