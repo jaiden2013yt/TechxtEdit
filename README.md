@@ -15,7 +15,7 @@ if you find any bugs or have anying you would want to see in this *please*, *ple
 - ASSINATE SERVICE WORKER BUTTON, AND A DISABLE CHECKBOX  🟡
 - ~~flip option in the replace text thing :3~~ I need to make the css better
 - ~~reset settings button~~
-- automatic size for html preview option                  🔵
+- ~~automatic size for html preview option~~ I did it :3
 - ~~make it so multiple files cant have the save name~~ I need to remake it cuz the code is bad, also file (3) and file (3) becomes file (3) and file (3) (2) also there might be bugs
 - file reordering                                         🔵
 - typing speed tracker with progress and stats and stuff  🟡
