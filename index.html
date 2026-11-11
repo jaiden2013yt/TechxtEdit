@@ -869,7 +869,12 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			renameFilesWithSameName()
 			
       files.forEach((elment) => {
-        fileList.innerHTML = fileList.innerHTML + "<button id='file" + elment.key + "' onclick='openFile(" + elment.key + ")'>" + elment.fileName + "</button>"
+				b = document.createElement("button")
+			 	b.id = "file" + elment.key
+			 	b.setAttribute('onclick', "openFile(" + elment.key + ")")
+			 	b.textContent = elment.fileName
+			 	fileList.append(b)
+				
       	if(elment.settings === "") {
 					elment.settings = {wordWrap: true, font: {mainFont: "scifi", secondFont: "none"}}
 				}
@@ -1575,8 +1580,13 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 	 function updateVisualFileNames() {
 		//lets now update the display list and input elm :3
 		//this is seperate cuz often we dont need this :3
-		  files.forEach((element, i) => {
-      	fileList.children[i].innerText = element.fileName //innerText is slow, BUT \n -> <br>   so its worth it :3
+		 fileList.innerHTML = ""
+		 files.forEach((elment) => {
+			 	b = document.createElement("button")
+			 	b.id = "file" + elment.key
+			 	b.setAttribute('onclick', "openFile(" + elment.key + ")")
+			 	b.textContent = elment.fileName
+			 	fileList.append(b)
 			})
 			
 			filenameInput.value = FileFromKey(activeFile).fileName
