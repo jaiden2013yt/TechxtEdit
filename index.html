@@ -199,7 +199,8 @@
   <br>
   <button onclick="removeActiveFile(); saveToLocalStorage()">remove active file</button>
   <input id="filenameInput" type="text" placeholder="filename" onchange="renameFile(); saveToLocalStorage()" value="new file" tabindex="-1"> 
-
+  <button onclick="MoveFile("l"); saveToLocalStorage()">←</button>
+	<button onclick="MoveFile("r"); saveToLocalStorage()">→</button>
 	<div id="DisplaySideBySideDiv" style="
 			height: 70vh; 
 			margin-top: 0.5rem;  
@@ -1007,7 +1008,31 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			filenameInput.value = FileFromKey(activeFile).fileName
 			document.getElementById("file" + activeFile).innerText = FileFromKey(activeFile).fileName
     }
-    
+
+	function MoveFile(dir) {
+		const activeIndex = files.indexOf(FileFromKey(activeFile))
+		if (activeIndex === -1) {
+			alert("the active file isnt in the files array somehow (in movefile)")
+			return;
+		}
+		if(dir === "l") {
+			if(activeIndex === 0 ) {
+				return; //you are on the leftmost file you cant go further
+			}
+			//swap them
+			[files[activeIndex], files[activeIndex-1]] = [files[activeIndex-1], files[activeIndex]]
+			//we dont need to update anything activeIndex wont be used again 
+		} else {
+			if(activeIndex === files.length-1) {
+				return; //you are on the rightmost file you cant go further
+			}
+			//swap em
+			[files[activeIndex], files[activeIndex+1]] = [files[activeIndex+1], files[activeIndex]]
+		}
+
+		//update them visually :3
+		updateVisualFileNames()	
+	}
     function saveToLocalStorage() {
       console.log("updating :3")
       if(FileFromKey(activeFile) !== undefined) {
