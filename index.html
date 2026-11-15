@@ -1613,7 +1613,8 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			 	b.textContent = elment.fileName
 			 	fileList.append(b)
 			})
-			
+			document.getElementById("file" + activeFile).classList.add("selectedFileButton")
+		 
 			filenameInput.value = FileFromKey(activeFile).fileName
 
 	 }
