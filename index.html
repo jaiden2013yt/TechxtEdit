@@ -199,8 +199,8 @@
   <br>
   <button onclick="removeActiveFile(); saveToLocalStorage()">remove active file</button>
   <input id="filenameInput" type="text" placeholder="filename" onchange="renameFile(); saveToLocalStorage()" value="new file" tabindex="-1"> 
-  <button onclick="MoveFile("l"); saveToLocalStorage()">←</button>
-	<button onclick="MoveFile("r"); saveToLocalStorage()">→</button>
+	<button onclick="MoveFile('l'); saveToLocalStorage()">←</button>
+	<button onclick="MoveFile('r'); saveToLocalStorage()">→</button>
 	<div id="DisplaySideBySideDiv" style="
 			height: 70vh; 
 			margin-top: 0.5rem;  
@@ -285,7 +285,7 @@
   <dialog id="encodeDecodeDialog">
     
 		<button onclick="encodeDecodeText('urlEncode')">url encode (no pluses)</button>
-		<button onclick="encodeDecodeText('urlDecode')">>url decode (no pluses)</button>
+		<button onclick="encodeDecodeText('urlDecode')">url decode (no pluses)</button>
     <button onclick="hideEncodeDecodeModal()">close</button>
   </dialog>
 
