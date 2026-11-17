@@ -454,7 +454,6 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
   	const editorHeightNumber = document.getElementById("editorHeightNumber")
 			
 		const codeDisplayBox = document.getElementById("codeDisplayBox")
-		const codeDisplaySettings = document.getElementById("codeDisplaySettings")
 		const sizedHTMLIFrameBoxDisplay = document.getElementById("sizedHTMLIFrameBoxDisplay")
 		const codeDisplayAutoReload = document.getElementById("codeDisplayAutoReload")
 		const HTMLDisplayHeight = document.getElementById("HTMLDisplayHeight")
@@ -481,8 +480,6 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
       
       DISPLAY.innerText = await UwUfile.text()
       
-       window.jaySon = "your text is not vaild json :((";
-       try{ jaySon = JSON.parse(DISPLAY.innerText) } catch(bugs) {} //fuk uu error >:3
     }
     
    
@@ -500,6 +497,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
         
       } else {
 
+				let pawrsted //initialize it here so we can use it later              
 				try {
           pawersted = JSON.parse(DISPLAY.innerText)   //parse the json
         } catch(bugs) {                               //if u cant parse it lets just leave
@@ -876,7 +874,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			renameFilesWithSameName()
 			
       files.forEach((elment) => {
-				b = document.createElement("button")
+				let b = document.createElement("button")
 			 	b.id = "file" + elment.key
 			 	b.setAttribute('onclick', "openFile(" + elment.key + ")")
 			 	b.textContent = elment.fileName
@@ -1044,7 +1042,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
       if(FileFromKey(activeFile) !== undefined) {
       FileFromKey(activeFile).text = DISPLAY.innerText
       }
-      StoreData = {FileContent: files, fileIdCount: fileIdCount, activeFile: activeFile, settings: settings}
+      let StoreData = {FileContent: files, fileIdCount: fileIdCount, activeFile: activeFile, settings: settings}
       StoreData = JSON.stringify(StoreData)
       localStorage.setItem("StoreData", StoreData);
     }
@@ -1142,7 +1140,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
         if (DISPLAY.contains(elementContainingSelection)) { //we use contain because the element of the select could be a child of the DISPLAY in some cases
           let range = selection.getRangeAt(0); //the zero mean we get the first range, you cant have multiple ranges tho
           range.deleteContents(); //if there is text that is selected lets remove it as thats what keyboards do.
-          tabCharacterNode = document.createTextNode("\t"); //html was sections of text as textNodes
+          let tabCharacterNode = document.createTextNode("\t"); //html was sections of text as textNodes
           range.insertNode(tabCharacterNode); //add the tab character at the place of selection
           range.collapse(false) //after the prevousi line we have just a single tab character selected, this removes the selection, the "false" makes the selection become after the charcter (well its not a selection, its jsut a text carat)
         }
@@ -1613,7 +1611,7 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 		//this is seperate cuz often we dont need this :3
 		 fileList.innerHTML = ""
 		 files.forEach((elment) => {
-			 	b = document.createElement("button")
+			 	let b = document.createElement("button")
 			 	b.id = "file" + elment.key
 			 	b.setAttribute('onclick', "openFile(" + elment.key + ")")
 			 	b.textContent = elment.fileName
