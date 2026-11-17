@@ -1665,9 +1665,9 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 				//lets go thru them, check if everything is okay, then like get the element we meant to apply it to and like do it!!!
 				p[1].foreach((v) => {
 					if(themeJSON.hasOwnProperty(p) && themeJSON[p].hasOwnProperty(v)) {
-						window[p[1]].style.setProperty(v, themeJSON[p][v])
+						window[p[0]].style.setProperty(v, themeJSON[p][v])
 					} else {
-						//window[p[1]].style.setProperty(v, /* todo, get a defualt array */)
+						//window[p[0].style.setProperty(v, /* todo, get a defualt array */)
 					}
 				})
 				return;
