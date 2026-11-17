@@ -23,20 +23,26 @@
 		<link href="fontOptains.css" rel="stylesheet" type="text/css" media="all">
     <style>
       
-
-      
+      :root {
+				/* global variables go here, they use pascal case */
+				/* --BackgroundColor: a color value idk; */ 
+			}
+			
       .DisplayCSS {
-        
-          background-color: #dddddd;
-          border: 1px solid #aaaaaa;
+          --bgColor: #dddddd;
+					--borderSize: 1px;
+					--borderColor: #aaaaaa;
+					--rounding: 10px;
+					--padding: 0 0 0.2rem 0.5rem;
+					--margin: 0 0 0 0;
+          background-color: var(--bgColor);
+          border: var(--borderSize) solid var(--borderColor);
           
-          border-radius: 10px;
+          border-radius: var(--rounding);
 
-		  		padding-left: 0.5rem;
-    			padding-bottom: 0.2rem;
+		  		padding: var(--padding);
 
-					margin-top: 0;
-					margin-bottom: 0;
+					margin: var(--margin);
           height: 100%;
   				box-sizing: border-box;
           overflow-y: scroll;
@@ -1618,6 +1624,64 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			filenameInput.value = FileFromKey(activeFile).fileName
 
 	 }
+
+
+	//see the deauflt object at the top and the vaild properties array here
+	function setTheme(themeJSON) {
+		//ignore non objects
+		if (
+			(typeof themeJSON === "object") 
+			&& (themeJSON !== null) 
+			&& !(Array.isArray(themeJSON))
+		) { 
+			alert("themeJSON isnt a object somehow " + themeJSON + " " + typeof themeJSON)
+			console.log("themeJSON: ", themeJSON)
+		}
+
+		const vaildProperties = [
+			[
+				"DISPLAY",
+				[
+					"bgColor",
+					"borderSize",
+					"borderColor",
+					"rounding",
+					"padding",
+					"margin",
+				],
+			],
+		]
+
+		/*
+			{
+				"//": "here is a small example u can also add comments",
+				DISPLAY: {
+					bgColor: "#696969"
+				}
+			}
+
+		*/
+						
+		vaildProperties.foreach((p) => {
+			if(Array.isArray(p)) {
+				//lets go thru them, check if everything is okay, then like get the element we meant to apply it to and like do it!!!
+				p[1].foreach((v) => {
+					if(themeJSON.hasOwnProperty(p) && themeJSON[p].hasOwnProperty(v)) {
+						window[p[1]].style.setProperty(v, themeJSON[p][v])
+					} else {
+						//window[p[1]].style.setProperty(v, /* todo, get a defualt array */)
+					}
+				})
+				return;
+			}
+			//if we have it on our json, set it, otherwise set it to defualt value
+			if(themeJSON.hasOwnProperty(p)) {
+				document.documentElement.style.setProperty(p, themeJSON[p] )
+			} else {
+				//document.documentElement.style.setProperty(p, /* todo, get a defualt array */ )
+			}
+		})
+	}
   </script>
   </body>
 </html>
