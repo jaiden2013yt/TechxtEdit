@@ -20,4 +20,5 @@ if you find any bugs or have anying you would want to see in this *please*, *ple
 - ~~file reordering~~
 - typing speed tracker with progress and stats and stuff  🟡
 - git? 🔴
+- codemirror? 🔴
 - i will add more later
