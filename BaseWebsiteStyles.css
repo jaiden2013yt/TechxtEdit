@@ -1,4 +1,3 @@
- /* get fonts */
 :root {
   /* fallback for non-display-p3 things */
   --pageColor: rgb(255, 220, 242);
@@ -8,8 +7,8 @@
 
 body {
   background-color: var(--pageColor);
-  padding: 0;
-  margin: 0;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
   color: black;
   font-family: Quantico, Verdana;
   font-weight: 300;
@@ -35,13 +34,6 @@ textarea,
 select {
    font-family: Quantico, Verdana;
    font-weight: 300;
-}
-
-ul {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  padding-inline-start: 0;
-  font-size: 1.1em;
 }
 
 
