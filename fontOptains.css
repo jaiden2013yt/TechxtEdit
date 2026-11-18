@@ -1,7 +1,9 @@
-@import url('https://fontsapi.zeoseven.com/572/main/result.css');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap'); /* uwu */
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-
+@import url('https://fontsapi.zeoseven.com/572/main/result.css');                                                 /* gun unifont      */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap'); /* uwu */                  /* noto color emoji */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');                         /* comic neue       */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');                             /* nunito           */
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');                          /* tangerine        */
+@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');  /* quantico         */
 /* jet brains mono */
 @font-face {
   font-family: 'JetBrains Mono';
