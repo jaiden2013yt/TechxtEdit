@@ -631,15 +631,15 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
       
       
       if (!replaceTextIsRegex.checked) {
-        //escape regex
-        search = search.replace(/\$/g, '$$$$');
+        //escape regex ,,, i <3 code snippets from the internet
+        search = string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
       } 
       
       try {
         if (replaceTextIsCaps.checked) {
           search = new RegExp(search, "gi")
         } else {
-          search = new RegExp(search, "gi")
+          search = new RegExp(search, "g")
         }
       } catch (bugs) {
         alert("failed to convert to regex, the error was: " + bugs)
