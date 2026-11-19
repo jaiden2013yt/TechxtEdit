@@ -22,4 +22,5 @@ if you find any bugs or have anying you would want to see in this *please*, *ple
 - git? 🔴
 - codemirror? 🔴
 - find text ;w; 🟡
+- per file bg and text color 🔵
 - i will add more later
