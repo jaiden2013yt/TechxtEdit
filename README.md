@@ -21,4 +21,5 @@ if you find any bugs or have anying you would want to see in this *please*, *ple
 - typing speed tracker with progress and stats and stuff  🟡
 - git? 🔴
 - codemirror? 🔴
+- find text ;w; 🔴
 - i will add more later
