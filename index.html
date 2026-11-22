@@ -1326,7 +1326,12 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			sizedHTMLIFrameBoxDisplay.style.height = settings.codeDisplay.HTMLDisplayHeight + "px"
 			sizedHTMLIFrameBoxDisplay.style.width = settings.codeDisplay.HTMLDisplayWidth + "px"
 			setCodeDisplayAutoResize()
-			
+
+			//enable rest of autosize if needed
+			if (codeDisplayAutoResize.checked) {
+				HTMLdisplayIframe?.classList.add("AutoResizeIFrameELMCSS")
+				sizedHTMLIFrameBoxDisplay?.classList.add("AutoResizeIFrameCSS")
+			}
 			//append it!!!
 			sizedHTMLIFrameBoxDisplay.appendChild(HTMLdisplayIframe)
 		} else {
@@ -1337,6 +1342,9 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			DISPLAY.removeEventListener("input", codeDisplayReloadEv)
 			sizedHTMLIFrameBoxDisplay.style.height = "0px"
 			sizedHTMLIFrameBoxDisplay.style.width = "0px"
+
+			HTMLdisplayIframe?.classList.remove("AutoResizeIFrameELMCSS")
+			sizedHTMLIFrameBoxDisplay?.classList.remove("AutoResizeIFrameCSS")
 		}
 	}
 
@@ -1423,8 +1431,10 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 
 		if(codeDisplayAutoResize.checked) {
 			//AutoResizeIFrameELMCSS AutoResizeIFrameCSS inputTextElmGrayedOut 
-			HTMLdisplayIframe?.classList.add("AutoResizeIFrameELMCSS")
-			sizedHTMLIFrameBoxDisplay?.classList.add("AutoResizeIFrameCSS") //?. meams if HTMLdisplayIframe exists
+			if(HTMLdisplayIframe) {
+				HTMLdisplayIframe?.classList.add("AutoResizeIFrameELMCSS")
+				sizedHTMLIFrameBoxDisplay?.classList.add("AutoResizeIFrameCSS") //?. meams if HTMLdisplayIframe exists
+			}
 			HTMLDisplayWidth.classList.add("inputTextElmGrayedOut")
 			HTMLDisplayHeight.classList.add("inputTextElmGrayedOut")
 		} else {
