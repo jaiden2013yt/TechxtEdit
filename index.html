@@ -1055,14 +1055,14 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
     setInterval(saveToLocalStorage, 10*1000) //saveToLocalStorage timer saveToLocalStorage timer saveToLocalStorage timer saveToLocalStorage timer
     
     function removeStorage() {
-      if (window.confirm("are you sure you want to delete ALL storage, this will delete EVERTHING. this CANNOT be undone.")) {
+      if (secureConfirm("deleting all your saved files and settings, with no chance of recovery")) { 
         localStorage.removeItem("StoreData")
         window.location.reload()
       }
     }
 
 	function removeSettings() {
-      if (window.confirm("are you sure you want to delete ALL setting, this will delete setting. this CANNOT be undone.")) {
+      if (window.confirm("are you sure you want to delete ALL setting, this will delete setting. this CANNOT be undone.")) { //NO NEED FOR SECURECONFIRM YET, ONCE THIS HAS CUSTOM CSS STUFF IT WILL BE NEEDED
         settings = ""
 				files.forEach((f) => {
 					f.settings = ""
@@ -1487,19 +1487,11 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 			console.log(bugiesUwU, typeof(dasave), dasave)
 		}
 
-		if(!window.confirm("ARE YOU SURE YOU WANT TO DO THIS, YOUR SAVE WILL BE **FULLY DELETED** AND REPLACED WITH THIS SAVEFILE.")) {
+		if(!secureConfirm("deleting your savefild and replacing it with the new one you uploaded") ) {
 			alert("saving declined")
 			return;
 		}
-		if(window.confirm("this **will** deleted it all and replace it (if you want to continue click cancel")) {
-			alert("saving declined")
-			return;
-		}
-
-		if(!window.confirm("click 'continue' or similar if you want to do this")) {
-			alert("saving declined")
-			return;
-		}
+		
 
 		
 		
@@ -1507,6 +1499,36 @@ I had used a <b>version compiled into a colrv0 tff file from https://github.com/
 		window.location.reload();
 	}
 
+
+
+	function secureConfirm(action) { //example "deleting your savefile and replace it with this new one
+
+		//not is here because we want to run this code if you click the one that makes it false, and that is a not kinda thing
+		if(!window.confirm("ARE YOU SURE YOU WANT TO DO THIS," + action + " is permenant and cannot be undone")) {
+			return false;
+		}
+		if(window.confirm("are you completey sure you want to do " + action + " (if you want to continue click cancel)")) {
+			return false;
+		}
+
+		if(!window.confirm("click 'continue' or similar if you want to " + action + " this is your last chance to decline" )) {
+			return false;
+		}
+
+		if(window.comfirm("i lied, this is the final one CLICK CANCEL IF YOU WANT TO DO IT, please make sure youre not making a mistake here, i care about you, any your files deeply, and i dont want you to make a mistake, also if you werent paying attention this is about: " + action)) {
+			return false;
+		}
+
+		if(! (window.prompt("okay final for real, type 'confirm' all lowercase, dont include the quotes, its jsut a-z lowercase chars, if you are fucking stupid this is about " + action) === "confirm") ) {
+			return false;
+		}
+		return true;
+	}
+
+	  
+
+
+	  
 
 	/* id="editorHeightSlider" type="range" min="10" max="777" value="777" step="1" oninput="setEditorHeightSlider(); saveToLocalStorage()">
   id="editorHeightNumber" type="number" value="777" style="width: 6ch;" oninput="setEditorHeightNum(); saveToLocalStorage()" tabindex="-1">
